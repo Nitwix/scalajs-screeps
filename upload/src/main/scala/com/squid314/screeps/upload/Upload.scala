@@ -19,7 +19,7 @@ object Upload extends App {
     implicit val credsFormat: JsonFormat[Creds] = jsonFormat3(Creds)
 
     // hacky git branch name extraction, but whatever
-    for (githead <- resource(Source.fromFile(".git/HEAD")) {_.getLines.toList}
+    for (githead <- resource(Source.fromFile(".git/HEAD")) {_.getLines().toList}
         .find(_.startsWith("ref: refs/heads/"))
         .map(_.substring("ref: refs/heads/".length))) {
 
